@@ -1,0 +1,40 @@
+name: Create PDF document and push
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ "main" ]
+    paths:
+      - 'Book_TeX/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Build PDF file
+        uses: xu-cheng/latex-action@v2
+        with:
+          working_directory: Book_TeX
+          root_file: main.tex
+          latexmk_shell_escape: true
+
+      - name: Store PDF
+        uses: actions/upload-artifact@v3
+        with:
+          path: Book_TeX/main.pdf
+
+      - name: Commit files
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          mkdir -p Book && cp Book_TeX/main.pdf Book/parallel_programing.pdf
+          git add Book/parallel_programing.pdf
+          git commit -m "Add pdf file"
+
+      - name: Push PDF
+        uses: ad-m/github-push-action@v0.6.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
