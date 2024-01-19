@@ -1,0 +1,356 @@
+\documentclass[14pt]{extarticle}
+
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+% \usepackage[left=3cm,right=2.5cm,top=2cm,bottom=2cm]{geometry}
+\usepackage[left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm]{geometry}
+\usepackage{graphicx}
+\usepackage{indentfirst} %indent first par
+
+\usepackage[breaklinks]{hyperref}
+\usepackage{xurl}
+
+\usepackage{csquotes}
+\usepackage[font=normalsize,labelfont=it,textfont=it,justification=centering]{caption}
+\usepackage{float} %for figure position
+\usepackage{amsmath} %for math equations
+\usepackage{lastpage}
+\usepackage{ulem} %зачёркнутый текст
+\usepackage{svg}
+
+% Шрифт Times в тексте как основной
+\usepackage{tempora}
+% Шрифт Times в формулах как основной
+\usepackage[varg, cmbraces, cmintegrals]{newtxmath}
+
+% \usepackage{todonotes}
+% \presetkeys{todonotes}{inline,backgroundcolor=yellow}{}
+
+% \usepackage{xr}		% for cross-file references
+% \externaldocument{main} %
+
+\usepackage{enumitem} %for list customization
+% \setlist[itemize]{leftmargin=2cm,labelsep=0.5cm}
+% \setlist[enumerate]{leftmargin=1.5cm}
+
+\usepackage{tabularx}
+\usepackage{makecell}
+\renewcommand\theadfont{\normalsize\bfseries}
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+\renewcommand\tabularxcolumn[1]{m{#1}}% for vertical centering text in X column
+
+% footnotes will start from 1 on each page
+\usepackage[perpage]{footmisc}
+
+%% Перечисления по умолчанию слишком разрежены.
+% \usepackage{enumitem}
+% \setlist{nosep}
+
+% Использовать полужирное начертание для векторов
+\let\vec=\mathbf
+
+
+\graphicspath{ {./images/} }
+
+\pagestyle{plain} %for counting pages
+\setcounter{page}{2}
+
+%% Абзацный отступ по ГОСТу - пять букв. Это примерно столько.
+\setlength{\parindent}{1.25cm}
+
+%% Не используем буллеты.
+% \renewcommand\labelitemi{---}
+
+% \newcommand{\specialcell}[2][c]{%command \specialcell for auto-carry in cells of table
+% \begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
+
+
+% \usepackage{caption}
+% \captionsetup[table]{justification=raggedright, singlelinecheck=false} %table caption left align
+
+\usepackage{titlesec}
+\titleformat*{\section}{\large\bfseries}
+\titleformat*{\subsection}{\normalsize\bfseries}
+\titleformat*{\subsubsection}{\normalsize\bfseries}
+\titleformat*{\paragraph}{\normalsize\bfseries}
+\titleformat*{\subparagraph}{\normalsize\bfseries}
+
+\usepackage{listings} %listings
+\usepackage{color} %colors for listings
+
+%\usepackage{parskip}
+%remove red line
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}	
+\lstset{ 
+  language=C++,                 % the language of the code
+  % backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}; should come as last argument
+  basicstyle=\footnotesize\ttfamily,        % the size of the fonts that are used for the code
+  breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+  breaklines=true,                 % sets automatic line breaking
+  captionpos=b,                   % sets the caption-position to bottom
+  commentstyle=\color{dkgreen},    % comment style
+  deletekeywords={...},            % if you want to delete keywords from the given language
+  escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+  extendedchars=\true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+  firstnumber=1,                % start line enumeration with line 1000
+  frame=single,	                   % adds a frame around the code
+  keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+  keywordstyle=\color{blue},       % keyword style
+  morekeywords={*, omp, pthread_t, cl_kernel, cl_program, size_t, NULL},            % if you want to add more keywords to the set
+  otherkeywords={pragma, include, ifdef, \#},
+  numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+  numbersep=14pt,                   % how far the line-numbers are from the code
+  numberstyle=\footnotesize\color{black}, % the style that is used for the line-numbers
+  rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+  showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+  showstringspaces=false,          % underline spaces within strings only
+  showtabs=false,                  % show tabs within strings adding particular underscores
+  stepnumber=1,                    % the step between two line-numbers. If it's 1, each line will be numbered
+  stringstyle=\color{mauve},     % string literal style
+  tabsize=2,	                   % sets default tabsize to 2 spaces
+  title=\relax,                   % \lstname show the filename of files included with \lstinputlisting; also try caption instead of title
+  inputpath=listings, %relative path to the listings,
+  xleftmargin=5.0ex, % left indent
+  % belowskip=-2.5em, % Не понятно для чего отрицательный скип
+  % aboveskip=0.5em,
+  belowskip=0em,
+  inputencoding=utf8
+}
+
+%% Делаем правильные подписи в правильных местах.
+\usepackage{caption}
+\usepackage{subcaption}
+% \usepackage{floatrow}
+
+
+%% "Тонкая" настройка теховских штрафов при формировании абзацев.
+\sloppy
+\binoppenalty=10000
+\relpenalty=10000
+\clubpenalty=10000
+\widowpenalty=10000
+
+%% Подписи к рисункам, таблицам, листингам.
+\floatstyle{plaintop}
+% \restylefloat{algorithm}
+
+% \floatsetup[figure]{style=plain, capposition=bottom}
+\captionsetup[figure]{
+    labelsep=endash,
+    singlelinecheck=false,
+    labelfont={normalsize,md},
+    justification=centering,
+    position=bottom
+}
+
+% \floatsetup[table]{style=plain, capposition=top}
+\captionsetup[table]{
+    labelsep=endash,
+    singlelinecheck=false,
+    labelfont={normalsize,md},
+    justification=justified,
+    position=top
+}
+
+% \floatsetup[algorithm]{style=plain, capposition=top}
+% \captionsetup[algorithm]{
+%     labelsep=endash,
+%     singlelinecheck=false,
+%     labelfont={normalsize,md},
+%     justification=justified,
+%     position=top
+% }
+
+% \floatsetup[lstlisting]{style=plain, capposition=top}
+% \captionsetup[lstlisting]{
+%     labelsep=endash,
+%     singlelinecheck=false,
+%     labelfont={normalsize,md},
+%     justification=justified,
+%     position=top
+% }
+
+
+
+
+\usepackage[
+    backend=biber,
+    bibencoding=utf8,
+    language=auto,
+    autolang=other,
+    % babel=other,
+    % maxbibnames=2,
+    % maxcitenames=2,
+    movenames=false,
+    sorting=ntvy,
+    isbn=false,
+    style=gost-numeric,
+]{biblatex}
+
+
+\renewcommand*{\mkgostheading}[1]{#1}
+\providecommand{\datecircaprint}{}
+\providecommand{\dateeraprintpre}[1]{}
+\providecommand{\mkyearzeros}{}
+\providecommand{\dateeraprint}[1]{}
+\providecommand{\dateuncertainprint}{}
+
+\renewbibmacro*{//}{\nopunct\printtext{\addspace\mbox{//}\addnbspace}}
+\renewcommand*{\newblockpunct}{\textemdash\addnbspace\bibsentence}
+\DeclareFieldFormat*{pages}{\mkpageprefix[bookpagination][\mbox]{#1}}
+\DeclareFieldFormat*{labelnumberwidth}{#1}
+\DefineBibliographyStrings{english}{pages={p\adddot}}
+\DefineBibliographyExtras{russian}{\protected\def\bibrangedash{\textendash\penalty\hyphenpenalty}}
+
+\DeclareSourcemap{
+    \maps[datatype=bibtex]{
+        \map{
+            \step[fieldsource=language, match=russian, final]
+            \step[fieldset=presort, fieldvalue={a}]
+        }
+        \map{
+            \step[fieldsource=language, notmatch=russian, final]
+            \step[fieldset=presort, fieldvalue={z}]
+        }
+    }
+}
+
+% Сделаем ссылки URL нормальным шрифтомs
+\renewcommand\UrlFont{\rmfamily}
+
+% Уберём пробел перед разделяющим двоеточием
+\renewcommand*{\addcolondelim}{\addcolon\space}
+
+\DeclareBibliographyDriver{online}{%
+    \usebibmacro{bibindex}%
+    \usebibmacro{begentry}%
+    \usebibmacro{heading}%
+    \newunit
+    \usebibmacro{author/editor}%
+    \setunit*{\labelnamepunct}%
+    \usebibmacro{title}%
+    \addspace\foreignlanguage{russian}{[Электронный ресурс]}
+    \setunit{\addcolondelim}%
+    \usebibmacro{translation}%
+    \def\bbx@gost@respdelim{\setunit{\respdelim}}% ----- Resp starts -----
+    \usebibmacro{byauthor}%
+    \setunit*{\resppunct}%
+    \iflistundef{organization}
+    {}
+    {%
+        \setrespdelim%
+        \printlist{organization}%
+        \setunit*{\resppunct}%
+    }%
+    \usebibmacro{credits}%
+    \setunit*{\resppunct}%
+    \usebibmacro{byeditor}%
+    \setunit*{\resppunct}%
+    \usebibmacro{bytranslator+others}%
+    \newunit\newblock
+    \printfield{version}%
+    \newunit\newblock
+    \printlist[semicolondelim]{specdata}%
+    \newunit\newblock
+    \usebibmacro{date}%
+    \newunit\newblock
+    \printupdate%
+    \newunit\newblock
+    \printfield{systemreq}%
+    \newunit\newblock
+    \usebibmacro{doi+eprint+url+note}%
+    \newunit\newblock
+    \usebibmacro{addendum+pubstate}%
+    \setunit{\bibpagerefpunct}\newblock
+    \usebibmacro{pageref}%
+    \newunit\newblock
+    \usebibmacro{related:init}%
+    \usebibmacro{related}%
+    \usebibmacro{finentry}
+}
+
+
+\addbibresource{bibliography.bib}
+
+\newcommand{\addbibliography}[1]{
+    \phantomsection
+    \addcontentsline{toc}{section}{#1}
+    \printbibliography[title={#1}]
+}
+
+
+\usepackage{minted}
+
+% \usemintedstyle{vs}
+
+\setminted{
+    fontsize=\small,
+    frame=single, 
+    encoding=utf8,
+    samepage,
+    autogobble,
+    tabsize=4
+}
+
+\setmintedinline{
+    fontsize=\normalsize,
+    encoding=utf8,
+    breaklines,
+    breakafter=-/
+}
+
+% Disabling italic font in minted 
+\usepackage{xpatch}
+\xpatchcmd{\mint}{\begingroup}{\begingroup\let\itshape\relax}{}{}
+\xpatchcmd{\inputminted}{\begingroup}{\begingroup\let\itshape\relax}{}{}
+\xpatchcmd{\mintinline}{\begingroup}{\begingroup\let\itshape\relax}{}{}
+\xpatchcmd{\minted}{\VerbatimEnvironment}{\VerbatimEnvironment\let\itshape\relax}{}{}
+
+\newcommand{\code}[2][text]{\mintinline{#1}{#2}}
+% \renewcommand{\inputminted}[2][c++]{\inputminted{#1}{listings/#2}}
+
+\newcommand{\authors}{Соснин В.В., Балакшин П.В., Шилко Д.С., Пушкарев Д.А., Мишенёв А.В., Кустарев П.В., Тропченко А.А.}
+
+% \setlength{\marginparwidth}{2cm}
+
+%% раскомментите при дебаге и закомментите при релизе
+%% наличие данной команды убирает все блоки туду с документа
+ % \presetkeys{todonotes}{disable}{}
+
+\providecommand\phantomsection{}
+
+\usepackage{tikz}
+
+\begin{document}
+    \nocite{*}
+
+    % \todo{Если видно это сообщение - раскомментировать строку в main.tex}
+    \include{titlePage} %обложка, не идеёт в счёт страниц
+	\include{firstPage}
+    \include{description}
+    
+    \setcounter{page}{3}
+    \addtocontents{toc}{\protect\sloppy}
+    \tableofcontents
+    
+	\include{introduction}
+	\include{section01_0}
+	\include{section02_0}
+	\include{section03_0}
+	\include{section04_theor_q} 
+	\include{section05_0_lab1}
+	\include{section06_0_lab2}
+	\include{section07_0_lab3}
+	\include{section08_0_lab4}
+	\include{section09_0_lab5}
+	\include{section10_0_lab6}
+    \include{conclusion}
+    \addbibliography{Список использованных и рекомендованных источников} 
+    \include{lastPage}
+    \include{backPage} %задняя страница обложки, не идёт в счёт страниц
+    
+\end{document}
