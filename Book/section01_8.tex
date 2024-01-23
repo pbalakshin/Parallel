@@ -44,9 +44,9 @@ CAS операцию можно достаточно легко реализов
 
 Примером lock-free структуры данных может служить очередь Майкла-Скотта. Эта очередь реализуется на базе односвязного списка и двух указателей, один из которых указывает на голову списка (dummy node), а другой -- на хвост (рисунок~\ref{lockFreeQueue:image}).
 
-\begin{figure}
+\begin{figure}[H]
     \centering
-    \includegraphics[width=0.99\linewidth]{lock_free_queue}
+    \includegraphics[width=\linewidth]{lock_free_queue}
     \caption{Очередь Майкла - Скотта}
     \label{lockFreeQueue:image}
 \end{figure}

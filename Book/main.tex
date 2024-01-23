@@ -24,11 +24,12 @@
 % Шрифт Times в формулах как основной
 \usepackage[varg, cmbraces, cmintegrals]{newtxmath}
 
+
+\usepackage{tikz}
+
+
 % \usepackage{todonotes}
 % \presetkeys{todonotes}{inline,backgroundcolor=yellow}{}
-
-% \usepackage{xr}		% for cross-file references
-% \externaldocument{main} %
 
 \usepackage{enumitem} %for list customization
 % \setlist[itemize]{leftmargin=2cm,labelsep=0.5cm}
@@ -79,53 +80,9 @@
 \usepackage{listings} %listings
 \usepackage{color} %colors for listings
 
-%\usepackage{parskip}
-%remove red line
-
-\definecolor{dkgreen}{rgb}{0,0.6,0}
-\definecolor{gray}{rgb}{0.5,0.5,0.5}
-\definecolor{mauve}{rgb}{0.58,0,0.82}	
-\lstset{ 
-  language=C++,                 % the language of the code
-  % backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}; should come as last argument
-  basicstyle=\footnotesize\ttfamily,        % the size of the fonts that are used for the code
-  breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
-  breaklines=true,                 % sets automatic line breaking
-  captionpos=b,                   % sets the caption-position to bottom
-  commentstyle=\color{dkgreen},    % comment style
-  deletekeywords={...},            % if you want to delete keywords from the given language
-  escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
-  extendedchars=\true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
-  firstnumber=1,                % start line enumeration with line 1000
-  frame=single,	                   % adds a frame around the code
-  keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
-  keywordstyle=\color{blue},       % keyword style
-  morekeywords={*, omp, pthread_t, cl_kernel, cl_program, size_t, NULL},            % if you want to add more keywords to the set
-  otherkeywords={pragma, include, ifdef, \#},
-  numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
-  numbersep=14pt,                   % how far the line-numbers are from the code
-  numberstyle=\footnotesize\color{black}, % the style that is used for the line-numbers
-  rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
-  showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
-  showstringspaces=false,          % underline spaces within strings only
-  showtabs=false,                  % show tabs within strings adding particular underscores
-  stepnumber=1,                    % the step between two line-numbers. If it's 1, each line will be numbered
-  stringstyle=\color{mauve},     % string literal style
-  tabsize=2,	                   % sets default tabsize to 2 spaces
-  title=\relax,                   % \lstname show the filename of files included with \lstinputlisting; also try caption instead of title
-  inputpath=listings, %relative path to the listings,
-  xleftmargin=5.0ex, % left indent
-  % belowskip=-2.5em, % Не понятно для чего отрицательный скип
-  % aboveskip=0.5em,
-  belowskip=0em,
-  inputencoding=utf8
-}
-
 %% Делаем правильные подписи в правильных местах.
 \usepackage{caption}
 \usepackage{subcaption}
-% \usepackage{floatrow}
-
 
 %% "Тонкая" настройка теховских штрафов при формировании абзацев.
 \sloppy
@@ -136,9 +93,7 @@
 
 %% Подписи к рисункам, таблицам, листингам.
 \floatstyle{plaintop}
-% \restylefloat{algorithm}
 
-% \floatsetup[figure]{style=plain, capposition=bottom}
 \captionsetup[figure]{
     labelsep=endash,
     singlelinecheck=false,
@@ -147,7 +102,6 @@
     position=bottom
 }
 
-% \floatsetup[table]{style=plain, capposition=top}
 \captionsetup[table]{
     labelsep=endash,
     singlelinecheck=false,
@@ -182,15 +136,11 @@
     bibencoding=utf8,
     language=auto,
     autolang=other,
-    % babel=other,
-    % maxbibnames=2,
-    % maxcitenames=2,
     movenames=false,
     sorting=ntvy,
     isbn=false,
     style=gost-numeric,
 ]{biblatex}
-
 
 \renewcommand*{\mkgostheading}[1]{#1}
 \providecommand{\datecircaprint}{}
@@ -285,8 +235,6 @@
 
 \usepackage{minted}
 
-% \usemintedstyle{vs}
-
 \setminted{
     fontsize=\small,
     frame=single, 
@@ -311,9 +259,6 @@
 \xpatchcmd{\minted}{\VerbatimEnvironment}{\VerbatimEnvironment\let\itshape\relax}{}{}
 
 \newcommand{\code}[2][text]{\mintinline{#1}{#2}}
-% \renewcommand{\inputminted}[2][c++]{\inputminted{#1}{listings/#2}}
-
-\newcommand{\authors}{Соснин В.В., Балакшин П.В., Шилко Д.С., Пушкарев Д.А., Мишенёв А.В., Кустарев П.В., Тропченко А.А.}
 
 % \setlength{\marginparwidth}{2cm}
 
@@ -323,7 +268,6 @@
 
 \providecommand\phantomsection{}
 
-\usepackage{tikz}
 
 \begin{document}
     \nocite{*}
