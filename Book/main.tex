@@ -10,7 +10,9 @@
 
 \usepackage[breaklinks]{hyperref}
 \usepackage{xurl}
-\usepackage{xr}
+
+\usepackage{xr} % cross-file references
+\usepackage{minted} % code listings
 
 \usepackage{csquotes}
 \usepackage[font=normalsize,labelfont=it,textfont=it,justification=centering]{caption}
@@ -228,11 +230,10 @@
 }
 
 
-\usepackage{minted}
 
 \setminted{
     fontsize=\small,
-    frame=single, 
+    frame=single,
     encoding=utf8,
     samepage,
     autogobble,
@@ -246,7 +247,7 @@
     breakafter=-/
 }
 
-% Disabling italic font in minted 
+% Disabling italic font in minted
 \usepackage{xpatch}
 \xpatchcmd{\mint}{\begingroup}{\begingroup\let\itshape\relax}{}{}
 \xpatchcmd{\inputminted}{\begingroup}{\begingroup\let\itshape\relax}{}{}
@@ -259,7 +260,7 @@
 
 %% раскомментите при дебаге и закомментите при релизе
 %% наличие данной команды убирает все блоки туду с документа
- % \presetkeys{todonotes}{disable}{}
+% \presetkeys{todonotes}{disable}{}
 
 \providecommand\phantomsection{}
 
@@ -269,27 +270,27 @@
 
     % \todo{Если видно это сообщение - раскомментировать строку в main.tex}
     \include{titlePage} %обложка, не идеёт в счёт страниц
-	\include{firstPage}
+    \include{firstPage}
     \include{description}
-    
+
     \setcounter{page}{3}
     \addtocontents{toc}{\protect\sloppy}
     \tableofcontents
-    
-	\include{introduction}
-	\include{src/01_theory}
-	\include{section02_0}
-	\include{section03_0}
-	\include{section04_theor_q} 
-	\include{section05_0_lab1}
-	\include{section06_0_lab2}
-	\include{section07_0_lab3}
-	\include{section08_0_lab4}
-	\include{section09_0_lab5}
-	\include{section10_0_lab6}
+
+    \include{introduction}
+    \include{src/01_theory}
+    \include{section02_0}
+    \include{section03_0}
+    \include{section04_theor_q}
+    \include{section05_0_lab1}
+    \include{section06_0_lab2}
+    \include{section07_0_lab3}
+    \include{section08_0_lab4}
+    \include{section09_0_lab5}
+    \include{section10_0_lab6}
     \include{conclusion}
-    \addbibliography{Список использованных и рекомендованных источников} 
+    \addbibliography{Список использованных и рекомендованных источников}
     \include{lastPage}
     \include{backPage} %задняя страница обложки, не идёт в счёт страниц
-    
+
 \end{document}
